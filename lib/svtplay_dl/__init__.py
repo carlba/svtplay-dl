@@ -40,26 +40,26 @@ class Options(object):
       Exceptions to prevent the entire application from exiting if that happens.
     """
 
-    def __init__(self):
-        self.output = None
-        self.resume = False
-        self.live = False
-        self.silent = False
-        self.force = False
-        self.quality = 0
-        self.flexibleq = None
-        self.hls = False
-        self.other = None
-        self.subtitle = False
-        self.username = None
-        self.password = None
-        self.thumbnail = False
-        self.all_episodes = False
-        self.force_subtitle = False
-        self.preferred = None
-        self.verbose = False
-        self.output_auto = False
-        self.service = None
+    def __init__(self, **kwargs):
+        self.output = kwargs.pop("output", None)
+        self.resume = kwargs.pop("resume", False)
+        self.live = kwargs.pop("live", False)
+        self.silent = kwargs.pop("silent", False)
+        self.force = kwargs.pop("force", False)
+        self.quality = kwargs.pop("quality", 0)
+        self.flexibleq = kwargs.pop("output", False)
+        self.hls = kwargs.pop("hls", False)
+        self.other = kwargs.pop("other", None)
+        self.subtitle = kwargs.pop("subtitle", False)
+        self.username = kwargs.pop("username", None)
+        self.password = kwargs.pop("password", None)
+        self.thumbnail = kwargs.pop("thumbnail", False)
+        self.all_episodes = kwargs.pop("all_episodes", False)
+        self.force_subtitle = kwargs.pop("force_subtitle", False)
+        self.preferred = kwargs.pop("preferred", None)
+        self.verbose = kwargs.pop("verbose", False)
+        self.output_auto = kwargs.pop("output_auto", False)
+        self.service = kwargs.pop("service", None)
 
 def get_media(url, options):
 
