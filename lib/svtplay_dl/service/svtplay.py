@@ -109,4 +109,8 @@ class Svtplay(Service, OpenGraphThumbMixin):
 
         xml = ET.XML(get_http_data(match.group(1)))
 
-        return sorted(x.text for x in xml.findall(".//item/link"))
+        if options.episode_list_exclude_filter:
+            episode_list = sorted(x.text for x in xml.findall(".//item/link") if options.episode_list_exclude_filter not in x.text)
+        else:
+            episode_list = sorted(x.text for x in xml.findall(".//item/link"))
+        return episode_list
