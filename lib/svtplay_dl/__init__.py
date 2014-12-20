@@ -60,6 +60,8 @@ class Options(object):
         self.verbose = kwargs.pop("verbose", False)
         self.output_auto = kwargs.pop("output_auto", False)
         self.service = kwargs.pop("service", None)
+        self.reverse_episode_list = kwargs.pop("reverse_episode_list", False)
+        self.episode_list_exclude_filter = kwargs.pop("episode_list_exclude_filter", None)
 
 def get_media(url, options):
 
@@ -82,6 +84,8 @@ def get_media(url, options):
                 return
 
         episodes = stream.find_all_episodes(options)
+        if options.reverse_episode_list:
+            episodes.reverse()
 
         for idx, o in enumerate(episodes):
             if o == url:
